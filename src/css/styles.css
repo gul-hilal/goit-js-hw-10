@@ -1,18 +1,73 @@
-/**
-  |============================
-  | include css partials with
-  | default @import url()
-  |============================
-*/
-/* Common styles */
-@import url('./reset.css');
-@import url('./base.css');
-@import url('./container.css');
-@import url('./animations.css');
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-/* Sections style */
-@import url('./header.css');
-@import url('./vite-promo.css');
-@import url('./badges.css');
-@import url('./back-link.css');
-@import url('./footer.css');
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  display: flex;
+  justify-content: center;
+  padding-top: 4rem;
+  background: #f4f6f8;
+  color: #222;
+}
+
+.timer-wrapper {
+  text-align: center;
+}
+
+#datetime-picker {
+  padding: 0.4rem 0.6rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button[data-start] {
+  margin-left: 0.5rem;
+  padding: 0.4rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  background: #5b7cfa;
+  color: #fff;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+
+button[data-start]:disabled {
+  background: #aab4ff;
+  cursor: default;
+}
+
+button[data-start]:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+.timer {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+}
+
+.value {
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
+.label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #555;
+}
