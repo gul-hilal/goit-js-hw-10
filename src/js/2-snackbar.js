@@ -3,16 +3,16 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 const form = document.querySelector('.form');
 
-form.addEventListener('submit', evt => {
-  evt.preventDefault();
-  const delayInput      = form.querySelector('input[name="delay"]');
-  const fulfilledRadio  = form.querySelector('input[value="fulfilled"]');
-  const delayMs         = Number(delayInput.value);
-  const state           = fulfilledRadio.checked ? 'fulfilled' : 'rejected';
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const delayInput = form.querySelector('input[name="delay"]');
+  const stateRadio = form.querySelector('input[name="state"]:checked');
+  const delayMs    = Number(delayInput.value);
+  const state      = stateRadio ? stateRadio.value : null;
 
-  new Promise((resolve, reject) => {
+  new Promise((res, rej) => {
     setTimeout(() => {
-      state === 'fulfilled' ? resolve(delayMs) : reject(delayMs);
+      state === 'fulfilled' ? res(delayMs) : rej(delayMs);
     }, delayMs);
   })
     .then(ms =>
